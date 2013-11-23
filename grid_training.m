@@ -1,4 +1,4 @@
-function [ G_Feature_Vectors ] = grid_training( image_names, L )
+function [ G_Feature_Vectors ] = grid_training( image_names, L, D )
 %GRID_TRAINING: A function that takes a group of images and extract the
 %feature vector with dimensionality D of each region in each image ( regions are extracted using
 %a 6*4 grid) and returns a L*(D+1) matrix; where each row indicates the
@@ -12,7 +12,7 @@ function [ G_Feature_Vectors ] = grid_training( image_names, L )
 %
 %   L: indicates the number of images in the training set 
 
-D = 15; %feature vector dimension
+%D = 15; %feature vector dimension
 G_Feature_Vectors = zeros(24*L,D+1); % we add one to append the image the region belongs to
 
 find_features_of_grid = @(block_struct) get_feature_vector_of_grid(block_struct.data);
@@ -25,20 +25,16 @@ for i = 1 : L
     
     %check if the image is horizontal or vertical
     if col >= row
-        
         tmp = blockproc(image,[floor(min(row, col)/4), floor(max(row, col)/6)],find_features_of_grid);
-        tmp = reshape(tmp,[],D);
-        tmp = tmp(1:24,:);
-        
     else
         
-        tmp = blockproc(image,[floor(max(row, col)/6), floor(min(row, col)/4)],find_features_of_grid);
-        tmp = reshape(tmp,[],D);
-        tmp = tmp(1:24,:);
-        
+        tmp = blockproc(image,[floor(max(row, col)/6), floor(min(row, col)/4)],find_features_of_grid);      
     end
+    
+    tmp = reshape(tmp,[],D);
+    tmp = tmp(1:24,:);
 
-    tmp(:,16) = i; %appends the image number to all visterms that belong to it
+    tmp(:,D+1) = i; %appends the image number to all visterms that belong to it
     
     G_Feature_Vectors(24*(i-1)+1:i*24,:) = tmp;
     
