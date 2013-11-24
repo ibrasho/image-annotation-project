@@ -1,6 +1,6 @@
-function [ PwI ] = grid_generate_keywords( I, centroids, PwJ_MLE,PwJ_GRE  ,  PbJ_MLE,PbJ_GRE , alpha, beta )
+function [ PwI ] = grid_generate_keywords( I, centroids, PwJ_MLE,PwJ_GRE  ,  PbJ_MLE,PbJ_GRE , alpha, beta , D,number_of_words )
 %UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%   D:  dimension of the feature vector
 
 
 find_features_of_grid = @(block_struct) get_feature_vector_of_grid(block_struct.data);
@@ -13,7 +13,7 @@ else
     tmp = blockproc(I,[floor(max(row, col)/6), floor(min(row, col)/4)],find_features_of_grid);       
 end
 
-tmp = reshape(tmp,[],grid_feature_vector_dimension);
+tmp = reshape(tmp,[],D);
 tmp = tmp(1:24,:);
 
 image_I_regions = tmp;
