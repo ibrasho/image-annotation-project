@@ -11,14 +11,7 @@ function [ feature_vectors ] = get_feature_vectors_of_regions_of_image(I,mask)
     for j = 1 : length(unique_regions)
         region_mask = zeros(size(mask));
         region_mask( mask == unique_regions(j)) = 1;
-        feature_vectors(j,:) = get_feature_vector_of_region(I,region_mask) ;
-        %fprintf('Finished Region %d of Image %d\n', j, i);
-        
-      
-        
-        
-        
-        
+        feature_vectors(j,:) = get_feature_vector_of_region(I,region_mask);
     end
 
 end
