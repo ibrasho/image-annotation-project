@@ -1,19 +1,20 @@
-function [CMoments] = getImageCm(InputImage)
-% FUNCTION [CMOMENTS] = COLORMOMENTS(INPUTIMAGE)
+function [cMoments] = getImageCMoments( Image )
+% FUNCTION [CMOMENTS] = COLORMOMENTS(IMAGE)
 % InputImage: Image in any format (Three-Dimensional matrix)
 % CMoments: Three moments for each channel
 
-[row, col, channel] = size(InputImage);
+[row, col, channel] = size( Image );
 if channel==1 % Single vector input
-    channel = col; col = 1;
+    channel = col;
+    col = 1;
 end
-CMoments = zeros(channel*3,1);
+cMoments = zeros( channel * 3, 1);
 
 for i=1:channel
     if col ~= 1
-        CMoments((i-1)*3+1:i*3) = Moments(reshape(InputImage(:,:,i),row*col,1));
+        cMoments((i-1) * 3 + 1:i * 3) = Moments( reshape( Image(:,:,i), row * col, 1 ) );
     else
-        CMoments((i-1)*3+1:i*3) = Moments(InputImage(:,i));
+        cMoments((i-1) * 3 + 1:i * 3) = Moments( Image(:,i) );
     end
 end
 
