@@ -33,19 +33,19 @@ end
 
 %for all b and J Compute P(b|J); according to the CMRM (Cross Media
 %Relvance Model)
-[~, maxInd] = max(fuzzy_membership);
-major_cluster_of_visterms = maxInd';
+% [~, maxInd] = max(fuzzy_membership);
+% major_cluster_of_visterms = maxInd';
 for i = 1 : number_of_images
     %fuzzy_membership_of_image_i_visterms = fuzzy_membership(:,24*(i-1)+1:i*24);
-    num_of_unique_blobs_in_image_i = length(unique(major_cluster_of_visterms(24*(i-1)+1:i*24)));    
+  %  num_of_unique_blobs_in_image_i = length(unique(major_cluster_of_visterms(24*(i-1)+1:i*24)));    
 
     for j = 1 : number_of_clusters
         
         %occur_b_J = length( blobs_of_image_i( blobs_of_image_i == j) );
         fuzzy_occur_of_b_in_J = sum(fuzzy_membership(j,24*(i-1)+1:i*24));
-        PbJ_MLE(i,j) = fuzzy_occur_of_b_in_J / num_of_unique_blobs_in_image_i;
+        PbJ_MLE(i,j) = fuzzy_occur_of_b_in_J; %/ num_of_unique_blobs_in_image_i;
            
-        occur_of_b_T = length ( major_cluster_of_visterms (major_cluster_of_visterms==j) );
+        occur_of_b_T = sum(fuzzy_membership(j,:)); %length ( major_cluster_of_visterms (major_cluster_of_visterms==j) );
         PbJ_GRE(i,j) = occur_of_b_T / T;
         
     end
