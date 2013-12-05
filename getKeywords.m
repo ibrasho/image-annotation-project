@@ -1,4 +1,4 @@
-function [ PwI ] = generateKeywordsGrid( I, centroids, PwJ_MLE, PwJ_GRE, PbJ_MLE, PbJ_GRE, alpha, beta, D, number_of_words )
+function [ PwI ] = getKeywords( I, centroids, PwJ_MLE, PwJ_GRE, PbJ_MLE, PbJ_GRE, alpha, beta, D, number_of_words )
     %generateKeywordsGrid Generate the keywords
     % D: dimension of the feature vector
 
