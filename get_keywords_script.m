@@ -6,9 +6,9 @@ Q_CFCMRM = getKeywords( I, fcenter, cfPwJ_MLE, cfPwJ_GRE, cfPbJ_MLE, cfPbJ_GRE, 
 Q_FCMRM = getKeywords(  I, fcenter,  fPwJ_MLE,  fPwJ_GRE,  fPbJ_MLE,  fPbJ_GRE, 0.1, 0.7, 15, number_of_words );
 
 fprintf('CFCMRM:');
-[~, tmp2_IDX] = sort( Q_CFCMRM, 'descend' );
-words(tmp2_IDX(1:5))
+[ ~, annotations ] = sort( Q_CFCMRM, 'descend' );
+words( annotations(1:5) )
 
 fprintf('FCMRM:')
-[~, tmp2_IDX] = sort( Q_FCMRM, 'descend' );
-words(tmp2_IDX(1:5))
+[ ~, annotations ] = sort( Q_FCMRM, 'descend' );
+words( annotations(1:5) )
