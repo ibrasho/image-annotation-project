@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [ CFCMRM_7_recall, CFCMRM_7_precision, CFCMRM_7_fscore ] = calculatePerformanceMeasures( CFCMRM_captions_of_testing_images, testing_image_keywords, 7 );
 [ FCMRM_7_recall, FCMRM_7_precision, FCMRM_7_fscore ] = calculatePerformanceMeasures(   FCMRM_captions_of_testing_images,  testing_image_keywords, 7 );
 
@@ -22,3 +23,6 @@ fprintf('  6\t%f\t%f\t%f\t%f\t%f\t%f\n', CFCMRM_6_recall, FCMRM_6_recall, CFCMRM
 fprintf('  7\t%f\t%f\t%f\t%f\t%f\t%f\n', CFCMRM_7_recall, FCMRM_7_recall, CFCMRM_7_precision, FCMRM_7_precision, CFCMRM_7_fscore, FCMRM_7_fscore);
 fprintf('\n');
 
+[ CFCMRM_5_recall, CFCMRM_5_precision ] = measureRecallAndPrecision( CFCMRM_captions_of_testing_images, testing_image_keywords, 5 );
+[  FCMRM_5_recall,  FCMRM_5_precision ] = measureRecallAndPrecision(  FCMRM_captions_of_testing_images, testing_image_keywords, 5 );
+[ TFCMRM_5_recall, TFCMRM_5_precision ] = measureRecallAndPrecision( TFCMRM_captions_of_testing_images, testing_image_keywords, 5 );
