@@ -1,24 +1,22 @@
-function [Histogram] = ROI_hist(InputImage, Mask, M)
-% FUNCTION [Histogram] = ROI_hist(INPUTIMAGE,Mask)
-% InputImage: Image in any format (Three-Dimensional matrix)
-% Mask: A binary mask specifying the region
-% M: Number of bins in the histogram
-% Histogram: A histogram for each channel
+function [ histogram ] = ROI_hist( input, mask, bins )
+% FUNCTION [ histogram] = ROI_hist( input, mask, bins )
+% input: Image in any format (3D matrix)
+% mask: A binary mask specifying the region
+% bins: Number of bins in the histogram
 
 
-Histogram = zeros(3,M);
+histogram = zeros(3,bins);
 
 %Mask = Mask & Mask; %converts all nonzero values to one
 
-for i=1:3
-        temp = InputImage(:,:,i);
-        Histogram(i,:) = hist(double(temp(Mask~=0)),M);
+    for i=1:3
+        temp = input(:,:,i);
+        histogram(i,:) = hist( double(temp(mask~=0)), bins);
+    end
+
+    histogram = histogram(:);
+
+    %new addition to make number of bins equal to 24
+    histogram = histogram(:)';
+    histogram = sum( reshape(histogram, [], 24) ); 
 end
-
-Histogram = Histogram(:);
-
-
-%new addition to make number of bins equal to 24
-Histogram = Histogram(:)';
-
-Histogram = sum(reshape(Histogram, [], 24));
