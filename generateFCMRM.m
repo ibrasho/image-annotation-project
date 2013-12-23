@@ -1,4 +1,4 @@
-function [ PwJ_MLE, PwJ_GRE, PbJ_MLE, PbJ_GRE ] = generateFCMRM( image_names, images_keywords, number_of_clusters, fuzzy_membership, number_of_words )
+function [ PwJ_MLE, PwJ_GRE, PbJ_MLE, PbJ_GRE ] = generateFCMRM( image_names, images_keywords, number_of_clusters, memberships, number_of_words )
 
     number_of_images = length(image_names);
 
@@ -28,10 +28,10 @@ function [ PwJ_MLE, PwJ_GRE, PbJ_MLE, PbJ_GRE ] = generateFCMRM( image_names, im
     % for all b and J: compute P(b|J) according to the CMRM (Cross Media Relvance Model)
     for i = 1:number_of_images
         for j = 1:number_of_clusters
-            fuzzy_occur_of_b_in_J = sum( fuzzy_membership(j,24*(i-1)+1:i*24) );
+            fuzzy_occur_of_b_in_J = sum( memberships(j,24*(i-1)+1:i*24) );
             PbJ_MLE(i,j) = fuzzy_occur_of_b_in_J;
             
-            occur_of_b_T = sum( fuzzy_membership(j,:) );
+            occur_of_b_T = sum( memberships(j,:) );
             PbJ_GRE(i,j) = occur_of_b_T / T;
         end
         fprintf('Finished image: %d \n', i);

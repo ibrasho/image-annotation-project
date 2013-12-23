@@ -2,7 +2,6 @@ function [ recall, precision, fscore ] = calculatePerformanceMeasures( CMRM_capt
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
-accuracy = 0;
 CMRM_captions = CMRM_captions(:,1:number_of_captions_of_importance);
 
 num_of_images = size( CMRM_captions, 1);

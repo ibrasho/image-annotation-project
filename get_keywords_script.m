@@ -1,18 +1,7 @@
 [file_name, file_path] = uigetfile( '*.jpg', 'Select the image', '../testing' );
 I = imread( fullfile( file_path, file_name ) );
 
-Q_CFCMRM = getKeywords( I, fCenter, cfPwJ_MLE, cfPwJ_GRE, cfPbJ_MLE, cfPbJ_GRE, 0.1, 0.7, 15, number_of_words );
-Q_FCMRM = getKeywords(  I, fCenter,  fPwJ_MLE,  fPwJ_GRE,  fPbJ_MLE,  fPbJ_GRE, 0.1, 0.7, 15, number_of_words );
-Q_TFCMRM = getKeywords( I, fCenter, tfPwJ_MLE, tfPwJ_GRE, tfPbJ_MLE, tfPbJ_GRE, 0.1, 0.7, 15, number_of_words );
+keywords = getKeywords(  I, centroids, PwJ_MLE, PwJ_GRE, PbJ_MLE, PbJ_GRE, 0.1, 0.7, 15, number_of_words );
 
-fprintf('C-FCMRM:');
-[ ~, annotations ] = sort( Q_CFCMRM, 'descend' );
+[ ~, annotations ] = sort( keywords, 'descend' );
 words( annotations(1:5) )
-
-fprintf('FCMRM:')
-[ ~, annotations ] = sort( Q_FCMRM, 'descend' );
-words( annotations(1:5) )
-
-fprintf('T-FCMRM:')
-[~, annotations] = sort( Q_TFCMRM, 'descend' );
-words(annotations(1:5))
