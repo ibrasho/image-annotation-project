@@ -1,3 +1,3 @@
-function [ memberships, centroids ] = clusterRegions( features_vector )
-    [ centroids, memberships, ~ ] = fcm( features_vector, 300, [ 1.2, 50 ] );
+function [ memberships, centroids ] = clusterRegions( features_vector, cluster_count, m )
+    [ centroids, memberships, ~ ] = fcm( features_vector, cluster_count, [ m, 50 ] );
 end
