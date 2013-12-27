@@ -1,4 +1,4 @@
-function [ PwI ] = getKeywords( image, centroids, PwJ_MLE, PwJ_GRE, PbJ_MLE, PbJ_GRE, alpha, beta, D, word_count )
+function [ PwI ] = getAnnotations( image, centroids, PwJ_MLE, PwJ_GRE, PbJ_MLE, PbJ_GRE, alpha, beta, D, word_count )
     % getKeywords Get the keywords suitable to image I according to the
     % CMRM provided
     % D: dimension of the feature vector
